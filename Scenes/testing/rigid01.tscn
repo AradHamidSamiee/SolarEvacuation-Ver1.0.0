@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/testing/RigidBody.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/testing/RigidBody2.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/testing/RigidBody3.gd" type="Script" id=3]
+
+[sub_resource type="PlaneMesh" id=3]
+size = Vector2( 20, 20 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 9.79435, 0.136853, 10.1116 )
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="SphereMesh" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 4 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 1.5, 3.5 )
+
+[node name="RigidBody2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.23801, 0, -5.97965 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="RigidBody2"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="RigidBody2"]
+shape = SubResource( 1 )
+
+[node name="RigidBody3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02672, 0, -5.59426 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="RigidBody3"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="RigidBody3"]
+mesh = SubResource( 2 )
+material/0 = null

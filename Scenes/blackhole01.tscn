@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/mat_blackhole01.tres" type="Material" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id=2]
+
+[node name="blackhole" type="KinematicBody" groups=[
+"blackhole",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
